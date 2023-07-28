@@ -51,6 +51,27 @@ function Messages() {
   );
 }
 
+function DashboardHero({ heroes }) {
+  return heroes.map((h) => <a>{h.name}</a>);
+}
+
+function Dashboard() {
+  const [heroes, setHeroes] = useState<Hero[]>([]);
+
+  useEffect(() => {
+    heroAPI.getHeroes().then((heroes) => setHeroes(heroes.slice(1, 5)));
+  }, []);
+
+  return (
+    <>
+      <h2>Top Heroes</h2>
+      <div className="heroes-menu">
+        <DashboardHero heroes={heroes} />
+      </div>
+    </>
+  );
+}
+
 export default function TourOfHeroesApp() {
   const [hero, setHero] = useState<Hero>(null as unknown as Hero);
   const [heroes, setHeroes] = useState<Hero[]>([]);
@@ -91,9 +112,17 @@ export default function TourOfHeroesApp() {
   return (
     <>
       <h2>My Heroes</h2>
+      <nav>
+        <a>Dashboard</a>
+        <a>Heroes</a>
+      </nav>
+
+      <Dashboard />
+
       <ul className="heroes">
         <HeroList />
       </ul>
+
       <HeroDetail hero={hero} handleNameChange={handleNameChange} />
       <Messages />
     </>
