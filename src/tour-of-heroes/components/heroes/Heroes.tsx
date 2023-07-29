@@ -2,7 +2,7 @@ import { ChangeEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
-import './Heroes.module.css';
+import './Heroes.scoped.css';
 
 const HeroList = ({
   heroes,

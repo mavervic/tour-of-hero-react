@@ -1,5 +1,5 @@
 import { messageAPI } from '../../api';
-import './Messages.module.css';
+import './Messages.scoped.css';
 
 const Msg = ({ msgs }: { msgs: string[] }) => {
   return msgs.map((msg) => <div>{msg}</div>);

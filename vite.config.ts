@@ -1,4 +1,5 @@
 import react from '@vitejs/plugin-react';
+import { reactScopedCssPlugin } from 'rollup-plugin-react-scoped-css';
 import { defineConfig } from 'vite';
 
 /**
@@ -15,7 +16,7 @@ export default (args: ViteConfigInput) => {
     args.mode === 'production' ? '[hash:base64:5]' : '[local]_[hash:base64:5]';
 
   return defineConfig({
-    plugins: [react()],
+    plugins: [react(), reactScopedCssPlugin()],
     css: {
       modules: {
         localsConvention: 'camelCaseOnly',

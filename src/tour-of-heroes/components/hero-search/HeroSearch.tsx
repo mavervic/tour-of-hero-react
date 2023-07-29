@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
-import './HeroSearch.module.css';
+import './HeroSearch.scoped.css';
 
 const SearchResult = ({ heroes }: { heroes: Hero[] }) => {
   return heroes.map((h) => (

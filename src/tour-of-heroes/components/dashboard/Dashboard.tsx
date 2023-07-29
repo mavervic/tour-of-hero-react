@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
 import HeroSearch from '../hero-search/HeroSearch';
-import './Dashboard.module.css';
+import './Dashboard.scoped.css';
 
 const DashboardHero = () => {
   const [heroes, setHeroes] = useState<Hero[]>([]);

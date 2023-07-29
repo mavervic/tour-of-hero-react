@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
-import './HeroDetail.module.css';
+import './HeroDetail.scoped.css';
 
 const HeroDetail = () => {
   const emptyHero = { id: null as unknown as number, name: '' };
