@@ -94,10 +94,10 @@ export const messageAPI = {
   messages: [] as string[],
 
   add(message: string) {
-    this.messages.push(message);
+    messageAPI.messages.push(message);
   },
 
   clear() {
-    this.messages = [];
+    messageAPI.messages = [];
   },
 };

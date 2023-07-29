@@ -5,7 +5,7 @@ import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
 import './HeroSearch.module.css';
 
-function SearchResult({ heroes }) {
+function SearchResult({ heroes }: { heroes: Hero[] }) {
   return heroes.map((h) => (
     <li key={h.id}>
       <Link to={`/heroes/${h.id}`}>{h.name}</Link>

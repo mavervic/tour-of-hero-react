@@ -1,29 +1,27 @@
 import { messageAPI } from '../../api';
 import './Messages.module.css';
 
-function Msg() {
-  return messageAPI.messages.map((message) => {
-    return <div>{message}</div>;
-  });
+function Msg({ msgs }: { msgs: string[] }) {
+  return msgs.map((msg) => <div>{msg}</div>);
 }
 
 export default function Messages() {
-  const hasMsg = messageAPI.messages.length > 0;
+  const msgs = messageAPI.messages;
+  const hasMsg = msgs.length > 0;
+
   return (
-    hasMsg && (
-      <>
-        <div>
-          <h2>Messages</h2>
-          <button
-            type="button"
-            className="clear"
-            onClick={() => messageAPI.clear()}
-          >
-            Clear messages
-          </button>
-          <Msg />
-        </div>
-      </>
-    )
+    <>
+      <h2>Messages</h2>
+      <div>
+        <button
+          type="button"
+          className="clear"
+          onClick={() => messageAPI.clear()}
+        >
+          Clear messages
+        </button>
+        {hasMsg && <Msg msgs={msgs} />}
+      </div>
+    </>
   );
 }

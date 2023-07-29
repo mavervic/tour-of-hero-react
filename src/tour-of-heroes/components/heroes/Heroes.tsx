@@ -4,7 +4,13 @@ import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
 import './Heroes.module.css';
 
-function HeroList({ heroes, deleteHero }) {
+function HeroList({
+  heroes,
+  deleteHero,
+}: {
+  heroes: Hero[];
+  deleteHero: (hero: Hero) => void;
+}) {
   return heroes.map((hero) => (
     <li key={hero.id}>
       <Link to={`/heroes/${hero.id}`}>

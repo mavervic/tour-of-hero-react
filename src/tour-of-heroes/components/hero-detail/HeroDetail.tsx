@@ -16,7 +16,7 @@ export default function HeroDetail() {
     }
   }, []); // FIXME [id]?
 
-  function handleNameChange(event) {
+  function handleNameChange(event: { target: { value: string } }) {
     setHero({
       ...selectedHero,
       name: event.target.value,
