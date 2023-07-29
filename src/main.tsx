@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import TourOfHeroesApp from './tour-of-heroes/TourOfHeroesApp';
 // import './index.css';
 import './tour-of-heroes/style.css';
+import MyComponent from './css-modules-demo/MyComponent';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
