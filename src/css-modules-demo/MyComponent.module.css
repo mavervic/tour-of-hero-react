@@ -1,8 +1,12 @@
 /* example.module.css */
-.red {
+/* .red {
   color: red;
 }
 
 .my-class {
   color: blue;
+} */
+
+.root h1 {
+  color: green;
 }
