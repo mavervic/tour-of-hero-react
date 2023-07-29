@@ -9,11 +9,17 @@ function DashboardHero() {
   const [heroes, setHeroes] = useState<Hero[]>([]);
 
   useEffect(() => {
-    heroAPI.getHeroes().then((heroes) => setHeroes(heroes));
+    heroAPI.getHeroes().then((heroes) => {
+      setHeroes(heroes);
+    });
   }, []);
 
-  const heroesSlice = heroes.slice(1, 5);
-  return heroesSlice.map((h) => <Link to={`/heroes/${h.id}`}>{h.name}</Link>);
+  const heroesSlice = heroes.slice(0, 4);
+  return heroesSlice.map((h) => (
+    <Link key={h.id} to={`/heroes/${h.id}`}>
+      {h.name}
+    </Link>
+  ));
 }
 
 export default function Dashboard() {

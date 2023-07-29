@@ -5,17 +5,17 @@ import { Hero } from '../../hero';
 import './Heroes.module.css';
 
 function HeroList({ heroes, deleteHero }) {
-  return heroes.map((h) => (
-    <li key={h.id}>
-      <Link to={`/heroes/${h.id}`}>
-        <span className="badge">{h.id}</span> {h.name}
+  return heroes.map((hero) => (
+    <li key={hero.id}>
+      <Link to={`/heroes/${hero.id}`}>
+        <span className="badge">{hero.id}</span> {hero.name}
       </Link>
 
       <button
         type="button"
         className="delete"
         title="delete hero"
-        onClick={() => deleteHero(h.id)}
+        onClick={() => deleteHero(hero)}
       >
         x
       </button>
@@ -48,9 +48,9 @@ export default function Heroes() {
     setInputValue('');
   };
 
-  const deleteHero = (id: number) => {
-    heroAPI.deleteHero(id).then(() => {
-      setHeroes(heroes.filter((h) => h.id !== id));
+  const deleteHero = (hero: Hero) => {
+    heroAPI.deleteHero(hero).then(() => {
+      setHeroes(heroes.filter((h) => h.id !== hero.id));
     });
   };
 
