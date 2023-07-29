@@ -1,17 +1,22 @@
-export default function HeroDetail({ hero, handleNameChange }) {
+import { useParams } from 'react-router-dom';
+
+export default function HeroDetail({ fetchHero, handleNameChange }) {
+  const { id } = useParams();
+  const selectedHero = fetchHero(id);
+
   return (
-    hero && (
+    selectedHero && (
       <>
-        <h2>{hero.name.toUpperCase()} Details</h2>
+        <h2>{selectedHero.name.toUpperCase()} Details</h2>
         <div>
-          <span>id: </span> {hero.id}
+          <span>id: </span> {selectedHero.id}
         </div>
         <div>
           <label htmlFor="name">Hero name: </label>
           <input
-            id="name"
-            name="name"
+            type="text"
             placeholder="name"
+            value={selectedHero.name}
             onChange={handleNameChange}
           />
         </div>

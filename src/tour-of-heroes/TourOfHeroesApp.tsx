@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import { heroAPI, messageAPI } from './api';
 import Dashboard from './components/dashboard/Dashboard';
 import HeroDetail from './components/hero-detail/HeroDetail';
@@ -28,18 +29,37 @@ export default function TourOfHeroesApp() {
     };
   }
 
+  function fetchHero(id: string) {
+    const hero = heroes.find((h) => h.id === ~~id);
+    return hero;
+  }
+
   return (
     <>
       <h2>My Heroes</h2>
       <nav>
-        <a>Dashboard</a>
-        <a>Heroes</a>
+        <a href="/">Dashboard</a>
+        <a href="/heroes">Heroes</a>
       </nav>
 
-      <Dashboard heroes={heroes} />
-      <Heroes hero={hero} heroes={heroes} onSelect={onSelect} />
+      <Routes>
+        <Route path="/" element={<Dashboard heroes={heroes} />} />
+        <Route
+          path="/heroes"
+          element={<Heroes hero={hero} heroes={heroes} onSelect={onSelect} />}
+        />
+        <Route
+          path="/heroes/:id"
+          element={
+            <HeroDetail
+              hero={hero}
+              fetchHero={fetchHero}
+              handleNameChange={handleNameChange}
+            />
+          }
+        />
+      </Routes>
 
-      <HeroDetail hero={hero} handleNameChange={handleNameChange} />
       <Messages />
     </>
   );

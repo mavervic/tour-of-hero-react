@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import TourOfHeroesApp from './tour-of-heroes/TourOfHeroesApp';
 // import './index.css';
+import { BrowserRouter } from 'react-router-dom';
 import './tour-of-heroes/style.css';
-import MyComponent from './css-modules-demo/MyComponent';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
@@ -18,6 +18,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
     {/* <button className="selected"></button>
     <h2>123</h2> */}
-    <TourOfHeroesApp />
+
+    <BrowserRouter>
+      <TourOfHeroesApp />
+    </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,14 +1,9 @@
+import { Link } from 'react-router-dom';
+
 function HeroList({ hero, heroes, onSelect }) {
   return heroes.map((h) => (
     <li key={h.id}>
-      <button
-        type="button"
-        className={h?.id === hero?.id ? 'selected' : ''}
-        onClick={onSelect(h)}
-      >
-        <span className="badge">{h.id}</span>
-        <span className="name">{h.name}</span>
-      </button>
+      <Link to={`/heroes/${h.id}`}>{h.name}</Link>
     </li>
   ));
 }

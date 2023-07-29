@@ -1,5 +1,8 @@
+import { Link } from 'react-router-dom';
+
 function DashboardHero({ heroes }) {
-  return heroes.map((h) => <a>{h.name}</a>);
+  const heroesSlice = heroes.slice(1, 5);
+  return heroesSlice.map((h) => <Link to={`/heroes/${h.id}`}>{h.name}</Link>);
 }
 
 export default function Dashboard({ heroes }) {
