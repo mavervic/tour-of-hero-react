@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
 import HeroSearch from '../hero-search/HeroSearch';
+import './Dashboard.module.css';
 
 function DashboardHero() {
   const [heroes, setHeroes] = useState<Hero[]>([]);
@@ -17,12 +18,12 @@ function DashboardHero() {
 
 export default function Dashboard() {
   return (
-    <>
+    <div className="root">
       <h2>Top Heroes</h2>
       <div className="heroes-menu">
         <DashboardHero />
       </div>
       <HeroSearch />
-    </>
+    </div>
   );
 }

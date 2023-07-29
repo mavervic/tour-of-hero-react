@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
+import './HeroDetail.module.css';
 
 export default function HeroDetail() {
   const emptyHero = { id: null as unknown as number, name: '' };

@@ -7,7 +7,7 @@ import Messages from './components/messages/Messages';
 export default function TourOfHeroesApp() {
   return (
     <>
-      <h2>My Heroes</h2>
+      <h1>Tour of Heroes</h1>
       <nav>
         <Link to="/">Dashboard</Link>
         <Link to="/heroes">Heroes</Link>

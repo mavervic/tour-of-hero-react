@@ -1,4 +1,5 @@
 import { messageAPI } from '../../api';
+import './Messages.module.css';
 
 function Msg() {
   return messageAPI.messages.map((message) => {

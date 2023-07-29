@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
+import './Heroes.module.css';
 
 function HeroList({ heroes, deleteHero }) {
   return heroes.map((h) => (
@@ -55,6 +56,7 @@ export default function Heroes() {
 
   return (
     <>
+      <h2>My Heroes</h2>
       <div>
         <label htmlFor="new-hero">Hero name: </label>
         <input id="new-hero" onChange={handleInputChange} />
