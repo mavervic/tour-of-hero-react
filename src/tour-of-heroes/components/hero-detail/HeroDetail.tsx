@@ -1,8 +1,34 @@
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { heroAPI } from '../../api';
+import { Hero } from '../../hero';
 
-export default function HeroDetail({ fetchHero, handleNameChange }) {
+export default function HeroDetail() {
+  const emptyHero = { id: null as unknown as number, name: '' };
   const { id } = useParams();
-  const selectedHero = fetchHero(id);
+  const [selectedHero, setHero] = useState<Hero>(emptyHero);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (id) {
+      heroAPI.getHeroById(id).then((hero) => setHero(hero || emptyHero));
+    }
+  }, []); // FIXME [id]?
+
+  function handleNameChange(event) {
+    setHero({
+      ...selectedHero,
+      name: event.target.value,
+    });
+  }
+
+  function goBack() {
+    navigate(-1);
+  }
+
+  function save() {
+    heroAPI.updateHero(selectedHero).then(goBack);
+  }
 
   return (
     selectedHero && (
@@ -20,6 +46,13 @@ export default function HeroDetail({ fetchHero, handleNameChange }) {
             onChange={handleNameChange}
           />
         </div>
+
+        <button type="button" onClick={goBack}>
+          go back
+        </button>
+        <button type="button" onClick={save}>
+          save
+        </button>
       </>
     )
   );

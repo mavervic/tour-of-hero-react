@@ -1,17 +1,28 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { heroAPI } from '../../api';
+import { Hero } from '../../hero';
+import HeroSearch from '../hero-search/HeroSearch';
 
-function DashboardHero({ heroes }) {
+function DashboardHero() {
+  const [heroes, setHeroes] = useState<Hero[]>([]);
+
+  useEffect(() => {
+    heroAPI.getHeroes().then((heroes) => setHeroes(heroes));
+  }, []);
+
   const heroesSlice = heroes.slice(1, 5);
   return heroesSlice.map((h) => <Link to={`/heroes/${h.id}`}>{h.name}</Link>);
 }
 
-export default function Dashboard({ heroes }) {
+export default function Dashboard() {
   return (
     <>
       <h2>Top Heroes</h2>
       <div className="heroes-menu">
-        <DashboardHero heroes={heroes} />
+        <DashboardHero />
       </div>
+      <HeroSearch />
     </>
   );
 }
