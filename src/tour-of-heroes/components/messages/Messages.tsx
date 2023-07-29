@@ -1,11 +1,11 @@
 import { messageAPI } from '../../api';
 import './Messages.module.css';
 
-function Msg({ msgs }: { msgs: string[] }) {
+const Msg = ({ msgs }: { msgs: string[] }) => {
   return msgs.map((msg) => <div>{msg}</div>);
-}
+};
 
-export default function Messages() {
+const Messages = () => {
   const msgs = messageAPI.messages;
   const hasMsg = msgs.length > 0;
 
@@ -24,4 +24,6 @@ export default function Messages() {
       </div>
     </>
   );
-}
+};
+
+export default Messages;

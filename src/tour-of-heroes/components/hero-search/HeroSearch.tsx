@@ -5,15 +5,15 @@ import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
 import './HeroSearch.module.css';
 
-function SearchResult({ heroes }: { heroes: Hero[] }) {
+const SearchResult = ({ heroes }: { heroes: Hero[] }) => {
   return heroes.map((h) => (
     <li key={h.id}>
       <Link to={`/heroes/${h.id}`}>{h.name}</Link>
     </li>
   ));
-}
+};
 
-export default function HeroSearch() {
+const HeroSearch = () => {
   const [heroes, setHeroes] = useState<Array<Hero>>([]);
   const inputRef = useRef('');
   const debouncedHandleInputChange = useRef(
@@ -47,4 +47,6 @@ export default function HeroSearch() {
       </div>
     </>
   );
-}
+};
+
+export default HeroSearch;

@@ -4,7 +4,7 @@ import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
 import './HeroDetail.module.css';
 
-export default function HeroDetail() {
+const HeroDetail = () => {
   const emptyHero = { id: null as unknown as number, name: '' };
   const { id } = useParams();
   const [selectedHero, setHero] = useState<Hero>(emptyHero);
@@ -16,20 +16,20 @@ export default function HeroDetail() {
     }
   }, []); // FIXME [id]?
 
-  function handleNameChange(event: { target: { value: string } }) {
+  const handleNameChange = (event: { target: { value: string } }) => {
     setHero({
       ...selectedHero,
       name: event.target.value,
     });
-  }
+  };
 
-  function goBack() {
+  const goBack = () => {
     navigate(-1);
-  }
+  };
 
-  function save() {
+  const save = () => {
     heroAPI.updateHero(selectedHero).then(goBack);
-  }
+  };
 
   return (
     selectedHero && (
@@ -57,4 +57,6 @@ export default function HeroDetail() {
       </>
     )
   );
-}
+};
+
+export default HeroDetail;

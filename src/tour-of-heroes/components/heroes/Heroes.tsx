@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { heroAPI } from '../../api';
 import { Hero } from '../../hero';
 import './Heroes.module.css';
 
-function HeroList({
+const HeroList = ({
   heroes,
   deleteHero,
 }: {
   heroes: Hero[];
   deleteHero: (hero: Hero) => void;
-}) {
+}) => {
   return heroes.map((hero) => (
     <li key={hero.id}>
       <Link to={`/heroes/${hero.id}`}>
@@ -27,9 +27,9 @@ function HeroList({
       </button>
     </li>
   ));
-}
+};
 
-export default function Heroes() {
+const Heroes = () => {
   const [heroes, setHeroes] = useState<Hero[]>([]);
   const [inputValue, setInputValue] = useState('');
 
@@ -37,9 +37,9 @@ export default function Heroes() {
     heroAPI.getHeroes().then((heroes) => setHeroes(heroes));
   }, []);
 
-  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
-  }
+  };
 
   const handleButtonClick = () => {
     const heroName = inputValue.trim();
@@ -81,4 +81,6 @@ export default function Heroes() {
       </ul>
     </>
   );
-}
+};
+
+export default Heroes;

@@ -5,7 +5,7 @@ import { Hero } from '../../hero';
 import HeroSearch from '../hero-search/HeroSearch';
 import './Dashboard.module.css';
 
-function DashboardHero() {
+const DashboardHero = () => {
   const [heroes, setHeroes] = useState<Hero[]>([]);
 
   useEffect(() => {
@@ -20,9 +20,9 @@ function DashboardHero() {
       {h.name}
     </Link>
   ));
-}
+};
 
-export default function Dashboard() {
+const Dashboard = () => {
   return (
     <div className="root">
       <h2>Top Heroes</h2>
@@ -32,4 +32,6 @@ export default function Dashboard() {
       <HeroSearch />
     </div>
   );
-}
+};
+
+export default Dashboard;

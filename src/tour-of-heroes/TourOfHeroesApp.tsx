@@ -4,7 +4,7 @@ import HeroDetail from './components/hero-detail/HeroDetail';
 import Heroes from './components/heroes/Heroes';
 import Messages from './components/messages/Messages';
 
-export default function TourOfHeroesApp() {
+const TourOfHeroesApp = () => {
   return (
     <>
       <h1>Tour of Heroes</h1>
@@ -24,4 +24,6 @@ export default function TourOfHeroesApp() {
       <Messages />
     </>
   );
-}
+};
+
+export default TourOfHeroesApp;
