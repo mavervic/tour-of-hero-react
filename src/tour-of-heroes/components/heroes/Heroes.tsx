@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { heroAPI } from '../../api';
+import { HERO_API } from '../../api';
 import { Hero } from '../../hero';
 import './Heroes.scoped.css';
 
@@ -34,7 +34,7 @@ const Heroes = () => {
   const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
-    heroAPI.getHeroes().then((heroes) => setHeroes(heroes));
+    HERO_API.getHeroes().then((heroes) => setHeroes(heroes));
   }, []);
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +47,7 @@ const Heroes = () => {
       return;
     }
 
-    heroAPI.addHero(heroName).then((hero) => {
+    HERO_API.addHero(heroName).then((hero) => {
       setHeroes([...heroes, hero]);
     });
 
@@ -55,7 +55,7 @@ const Heroes = () => {
   };
 
   const deleteHero = (hero: Hero) => {
-    heroAPI.deleteHero(hero).then(() => {
+    HERO_API.deleteHero(hero).then(() => {
       setHeroes(heroes.filter((h) => h.id !== hero.id));
     });
   };

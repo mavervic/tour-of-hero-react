@@ -1,15 +1,15 @@
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
 
-export const heroAPI = {
+export const HERO_API = {
   heroes: HEROES,
 
   getHeroes: (): Promise<Hero[]> => {
     return new Promise((resolve) => {
       setTimeout(
         () => {
-          messageAPI.add('HeroService: fetched heroes');
-          resolve(heroAPI.heroes);
+          MESSAGE_API.add('HeroService: fetched heroes');
+          resolve(HERO_API.heroes);
         },
         Math.floor(Math.random() * 100) + 200
       );
@@ -20,8 +20,8 @@ export const heroAPI = {
     return new Promise((resolve) => {
       setTimeout(
         () => {
-          messageAPI.add(`HeroService: fetched hero id=${id}`);
-          resolve(heroAPI.heroes.find((hero) => hero.id === ~~id) || null);
+          MESSAGE_API.add(`HeroService: fetched hero id=${id}`);
+          resolve(HERO_API.heroes.find((hero) => hero.id === ~~id) || null);
         },
         Math.floor(Math.random() * 100) + 200
       );
@@ -32,9 +32,9 @@ export const heroAPI = {
     return new Promise((resolve) => {
       setTimeout(
         () => {
-          messageAPI.add(`HeroService: searched heroes matching "${term}"`);
+          MESSAGE_API.add(`HeroService: searched heroes matching "${term}"`);
           resolve(
-            heroAPI.heroes.filter((hero) =>
+            HERO_API.heroes.filter((hero) =>
               hero.name.toLowerCase().includes(term.toLowerCase())
             )
           );
@@ -48,8 +48,8 @@ export const heroAPI = {
     return new Promise((resolve) => {
       setTimeout(
         () => {
-          messageAPI.add(`HeroService: updated hero id=${hero.id}`);
-          heroAPI.heroes = heroAPI.heroes.map((h) =>
+          MESSAGE_API.add(`HeroService: updated hero id=${hero.id}`);
+          HERO_API.heroes = HERO_API.heroes.map((h) =>
             h.id === hero.id ? hero : h
           );
           resolve(hero);
@@ -63,12 +63,12 @@ export const heroAPI = {
     return new Promise((resolve) => {
       setTimeout(
         () => {
-          messageAPI.add(`HeroService: added hero name=${name}`);
+          MESSAGE_API.add(`HeroService: added hero name=${name}`);
           const hero: Hero = {
-            id: Math.max(...heroAPI.heroes.map((h) => h.id)) + 1,
+            id: Math.max(...HERO_API.heroes.map((h) => h.id)) + 1,
             name,
           };
-          heroAPI.heroes = [...heroAPI.heroes, hero];
+          HERO_API.heroes = [...HERO_API.heroes, hero];
           resolve(hero);
         },
         Math.floor(Math.random() * 100) + 200
@@ -80,8 +80,8 @@ export const heroAPI = {
     return new Promise((resolve) => {
       setTimeout(
         () => {
-          messageAPI.add(`HeroService: deleted hero id=${hero.id}`);
-          heroAPI.heroes = heroAPI.heroes.filter((h) => h.id !== hero.id);
+          MESSAGE_API.add(`HeroService: deleted hero id=${hero.id}`);
+          HERO_API.heroes = HERO_API.heroes.filter((h) => h.id !== hero.id);
           resolve(hero);
         },
         Math.floor(Math.random() * 100) + 200
@@ -90,14 +90,14 @@ export const heroAPI = {
   },
 };
 
-export const messageAPI = {
+export const MESSAGE_API = {
   messages: [] as string[],
 
   add(message: string) {
-    messageAPI.messages.push(message);
+    MESSAGE_API.messages.push(message);
   },
 
   clear() {
-    messageAPI.messages = [];
+    MESSAGE_API.messages = [];
   },
 };

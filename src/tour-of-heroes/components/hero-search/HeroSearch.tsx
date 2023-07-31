@@ -1,7 +1,7 @@
 import { debounce } from 'lodash';
 import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { heroAPI } from '../../api';
+import { HERO_API } from '../../api';
 import { Hero } from '../../hero';
 import './HeroSearch.scoped.css';
 
@@ -23,7 +23,7 @@ const HeroSearch = () => {
         return;
       }
 
-      heroAPI.searchHeroes(inputValue).then((heroes) => {
+      HERO_API.searchHeroes(inputValue).then((heroes) => {
         setHeroes(heroes);
       });
     }, 500)

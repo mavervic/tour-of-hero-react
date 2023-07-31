@@ -1,4 +1,4 @@
-import { messageAPI } from '../../api';
+import { MESSAGE_API } from '../../api';
 import './Messages.scoped.css';
 
 const Msg = ({ msgs }: { msgs: string[] }) => {
@@ -6,7 +6,7 @@ const Msg = ({ msgs }: { msgs: string[] }) => {
 };
 
 const Messages = () => {
-  const msgs = messageAPI.messages;
+  const msgs = MESSAGE_API.messages;
   const hasMsg = msgs.length > 0;
 
   return (
@@ -16,7 +16,7 @@ const Messages = () => {
         <button
           type="button"
           className="clear"
-          onClick={() => messageAPI.clear()}
+          onClick={() => MESSAGE_API.clear()}
         >
           Clear messages
         </button>

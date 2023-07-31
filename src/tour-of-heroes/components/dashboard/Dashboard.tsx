@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { heroAPI } from '../../api';
+import { HERO_API } from '../../api';
 import { Hero } from '../../hero';
 import HeroSearch from '../hero-search/HeroSearch';
 import './Dashboard.scoped.css';
@@ -9,7 +9,7 @@ const DashboardHero = () => {
   const [heroes, setHeroes] = useState<Hero[]>([]);
 
   useEffect(() => {
-    heroAPI.getHeroes().then((heroes) => {
+    HERO_API.getHeroes().then((heroes) => {
       setHeroes(heroes);
     });
   }, []);

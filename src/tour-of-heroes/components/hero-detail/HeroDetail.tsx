@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { heroAPI } from '../../api';
+import { HERO_API } from '../../api';
 import { Hero } from '../../hero';
 import './HeroDetail.scoped.css';
 
@@ -12,7 +12,7 @@ const HeroDetail = () => {
 
   useEffect(() => {
     if (id) {
-      heroAPI.getHeroById(id).then((hero) => setHero(hero || emptyHero));
+      HERO_API.getHeroById(id).then((hero) => setHero(hero || emptyHero));
     }
   }, []); // FIXME [id]?
 
@@ -28,7 +28,7 @@ const HeroDetail = () => {
   };
 
   const save = () => {
-    heroAPI.updateHero(selectedHero).then(goBack);
+    HERO_API.updateHero(selectedHero).then(goBack);
   };
 
   return (
