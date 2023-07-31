@@ -24,13 +24,13 @@ const DashboardHero = () => {
 
 const Dashboard = () => {
   return (
-    <div className="root">
+    <>
       <h2>Top Heroes</h2>
       <div className="heroes-menu">
         <DashboardHero />
       </div>
       <HeroSearch />
-    </div>
+    </>
   );
 };
 
