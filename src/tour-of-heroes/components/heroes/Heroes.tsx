@@ -11,6 +11,10 @@ const HeroList = ({
   heroes: Hero[];
   deleteHero: (hero: Hero) => void;
 }) => {
+  const handleButtonClick = (hero: Hero) => {
+    return () => deleteHero(hero);
+  };
+
   return heroes.map((hero) => (
     <li key={hero.id}>
       <Link to={`/heroes/${hero.id}`}>
@@ -21,7 +25,7 @@ const HeroList = ({
         type="button"
         className="delete"
         title="delete hero"
-        onClick={() => deleteHero(hero)}
+        onClick={handleButtonClick(hero)}
       >
         x
       </button>

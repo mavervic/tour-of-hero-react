@@ -9,15 +9,15 @@ const Messages = () => {
   const msgs = MESSAGE_API.messages;
   const hasMsg = msgs.length > 0;
 
+  const handleButtonClick = () => {
+    MESSAGE_API.clear();
+  };
+
   return (
     <>
       <h2>Messages</h2>
       <div>
-        <button
-          type="button"
-          className="clear"
-          onClick={() => MESSAGE_API.clear()}
-        >
+        <button type="button" className="clear" onClick={handleButtonClick}>
           Clear messages
         </button>
         {hasMsg && <Msg msgs={msgs} />}

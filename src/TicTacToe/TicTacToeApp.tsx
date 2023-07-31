@@ -20,15 +20,17 @@ function Square({ value, onSquareClick }: SquareProps) {
 }
 
 function Board({ xIsNext, squares, onPlay }: BoardProps) {
-  function handleClick(idx: number) {
-    if (squares[idx] || calculateWinner(squares)) {
-      return;
-    }
+  const hankdleSquareClick = (idx: number) => {
+    return () => {
+      if (squares[idx] || calculateWinner(squares)) {
+        return;
+      }
 
-    const nextSquares = squares.slice();
-    nextSquares[idx] = xIsNext ? 'X' : 'O';
-    onPlay(nextSquares);
-  }
+      const nextSquares = squares.slice();
+      nextSquares[idx] = xIsNext ? 'X' : 'O';
+      onPlay(nextSquares);
+    };
+  };
 
   const winner = calculateWinner(squares);
   let status;
@@ -42,19 +44,19 @@ function Board({ xIsNext, squares, onPlay }: BoardProps) {
     <>
       <div className="status">{status}</div>
       <div className="board-row">
-        <Square value={squares[0]} onSquareClick={() => handleClick(0)} />
-        <Square value={squares[1]} onSquareClick={() => handleClick(1)} />
-        <Square value={squares[2]} onSquareClick={() => handleClick(2)} />
+        <Square value={squares[0]} onSquareClick={hankdleSquareClick(0)} />
+        <Square value={squares[1]} onSquareClick={hankdleSquareClick(1)} />
+        <Square value={squares[2]} onSquareClick={hankdleSquareClick(2)} />
       </div>
       <div className="board-row">
-        <Square value={squares[3]} onSquareClick={() => handleClick(3)} />
-        <Square value={squares[4]} onSquareClick={() => handleClick(4)} />
-        <Square value={squares[5]} onSquareClick={() => handleClick(5)} />
+        <Square value={squares[3]} onSquareClick={hankdleSquareClick(3)} />
+        <Square value={squares[4]} onSquareClick={hankdleSquareClick(4)} />
+        <Square value={squares[5]} onSquareClick={hankdleSquareClick(5)} />
       </div>
       <div className="board-row">
-        <Square value={squares[6]} onSquareClick={() => handleClick(6)} />
-        <Square value={squares[7]} onSquareClick={() => handleClick(7)} />
-        <Square value={squares[8]} onSquareClick={() => handleClick(8)} />
+        <Square value={squares[6]} onSquareClick={hankdleSquareClick(6)} />
+        <Square value={squares[7]} onSquareClick={hankdleSquareClick(7)} />
+        <Square value={squares[8]} onSquareClick={hankdleSquareClick(8)} />
       </div>
     </>
   );
@@ -74,9 +76,11 @@ export default function Game() {
     setCurrentMove(nextHistory.length - 1);
   }
 
-  function jumpTo(nextMove: number) {
-    setCurrentMove(nextMove);
-  }
+  const handleButtonClick = (nextMove: number) => {
+    return () => {
+      setCurrentMove(nextMove);
+    };
+  };
 
   const moves = history.map((_, move) => {
     let description;
@@ -87,7 +91,7 @@ export default function Game() {
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+        <button onClick={handleButtonClick(move)}>{description}</button>
       </li>
     );
   });
