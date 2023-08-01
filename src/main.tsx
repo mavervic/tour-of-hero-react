@@ -19,5 +19,9 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
       <TourOfHeroesApp />
     </BrowserRouter>
+
+    {/* <BrowserRouter>
+      <UseEffectApp />
+    </BrowserRouter> */}
   </React.StrictMode>
 );
