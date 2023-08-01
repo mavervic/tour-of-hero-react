@@ -1,8 +1,10 @@
+import { lazy, Suspense } from 'react';
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
-import Dashboard from './components/dashboard/Dashboard';
-import HeroDetail from './components/hero-detail/HeroDetail';
-import Heroes from './components/heroes/Heroes';
 import Messages from './components/messages/Messages';
+
+const Dashboard = lazy(() => import('./components/dashboard/Dashboard'));
+const HeroDetail = lazy(() => import('./components/hero-detail/HeroDetail'));
+const Heroes = lazy(() => import('./components/heroes/Heroes'));
 
 const TourOfHeroesApp = () => {
   return (
@@ -13,13 +15,15 @@ const TourOfHeroesApp = () => {
         <Link to="/heroes">Heroes</Link>
       </nav>
 
-      <Routes>
-        <Route path="" element={<Navigate to="/dashboard" />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/heroes" element={<Heroes />} />
-        <Route path="/heroes/:id" element={<HeroDetail />} />
-        <Route path="*" element={<Navigate to="/dashboard" />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="" element={<Navigate to="/dashboard" />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/heroes" element={<Heroes />} />
+          <Route path="/heroes/:id" element={<HeroDetail />} />
+          <Route path="*" element={<Navigate to="/dashboard" />} />
+        </Routes>
+      </Suspense>
 
       <Messages />
     </>
