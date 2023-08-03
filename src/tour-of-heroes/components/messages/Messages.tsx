@@ -1,13 +1,27 @@
+import { useEffect, useState } from 'react';
 import { MESSAGE_API } from '../../api';
 import './Messages.scoped.css';
 
 const Msg = ({ msgs }: { msgs: string[] }) => {
-  return msgs.map((msg) => <div>{msg}</div>);
+  return msgs.map((msg, idx) => <div key={idx}>{msg}</div>);
 };
 
 const Messages = () => {
-  const msgs = MESSAGE_API.messages;
-  const hasMsg = msgs.length > 0;
+  const [messages, setMessages] = useState<string[]>([]);
+
+  // FIXME - useEffect is called on every render, even if messages is not changed!
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      // mock api call
+      const newMessages = [...MESSAGE_API.messages];
+      if (newMessages.length !== messages.length) {
+        console.log('Messages component is rendering');
+        setMessages(newMessages);
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  });
 
   const handleButtonClick = () => {
     MESSAGE_API.clear();
@@ -20,7 +34,7 @@ const Messages = () => {
         <button type="button" className="clear" onClick={handleButtonClick}>
           Clear messages
         </button>
-        {hasMsg && <Msg msgs={msgs} />}
+        {messages && <Msg msgs={messages} />}
       </div>
     </>
   );
