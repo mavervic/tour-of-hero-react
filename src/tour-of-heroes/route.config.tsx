@@ -13,9 +13,9 @@ const TOUR_OF_HERO_ROUTER = createBrowserRouter([
   {
     path: '/',
     element: <TourOfHeroesApp />,
-    errorElement: <Dashboard />,
+    errorElement: <Dashboard />, // TODO handle error
     children: [
-      { index: true, element: <Navigate to="/dashboard" /> },
+      { index: true, element: <Navigate to="/dashboard" /> }, // https://reactrouter.com/en/main/start/tutorial#index-routes
       { path: '/dashboard', element: <Dashboard /> },
       { path: '/heroes', element: <Heroes /> },
       { path: '/heroes/:id', element: <HeroDetail /> },
