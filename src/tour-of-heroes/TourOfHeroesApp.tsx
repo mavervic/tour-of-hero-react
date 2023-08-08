@@ -1,5 +1,6 @@
 import { Link, Outlet } from 'react-router-dom';
 import Messages from './components/messages/Messages';
+import { MessageContextProvider } from './contexts/MessageContext';
 
 const TourOfHeroesApp = () => {
   return (
@@ -20,8 +21,10 @@ const TourOfHeroesApp = () => {
         </Routes>
       </Suspense> */}
 
-      <Outlet />
-      <Messages />
+      <MessageContextProvider>
+        <Outlet />
+        <Messages />
+      </MessageContextProvider>
     </>
   );
 };
