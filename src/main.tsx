@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 // import './index.css';
-import { BrowserRouter } from 'react-router-dom';
-import TourOfHeroesApp from './tour-of-heroes/TourOfHeroesApp';
+import { RouterProvider } from 'react-router-dom';
+import TOUR_OF_HERO_ROUTER from './tour-of-heroes/route.config';
 import './tour-of-heroes/style.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -16,9 +16,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <h1 className="red">test</h1>
     </> */}
 
-    <BrowserRouter>
+    {/* <BrowserRouter>
       <TourOfHeroesApp />
-    </BrowserRouter>
+    </BrowserRouter> */}
+
+    <RouterProvider router={TOUR_OF_HERO_ROUTER} />
 
     {/* <BrowserRouter>
       <UseEffectApp />
