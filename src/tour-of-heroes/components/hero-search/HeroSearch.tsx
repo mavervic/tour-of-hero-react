@@ -1,11 +1,11 @@
 import { debounce } from 'lodash';
-import { useRef, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HERO_API } from '../../api';
 import { Hero } from '../../hero';
 import './HeroSearch.scoped.css';
 
-const SearchResult = ({ heroes }: { heroes: Hero[] }) => {
+const SearchResult: FC<{ heroes: Hero[] }> = ({ heroes }) => {
   return heroes.map((h) => (
     <li key={h.id}>
       <Link to={`/heroes/${h.id}`}>{h.name}</Link>
