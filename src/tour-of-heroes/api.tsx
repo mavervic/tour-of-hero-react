@@ -1,6 +1,9 @@
 import { Hero } from './hero';
 import { HEROES } from './mock-heroes';
 
+// FIXME - this is not working
+// const msgCtx = useContext(MessageContext);
+
 export const HERO_API = {
   heroes: HEROES,
 

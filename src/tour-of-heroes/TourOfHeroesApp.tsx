@@ -1,8 +1,16 @@
-import { Link, Outlet } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import Messages from './components/messages/Messages';
 import { MessageContextProvider } from './contexts/MessageContext';
 
 const TourOfHeroesApp = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    console.log('Location changed:', location.pathname);
+    // TODO: Perform some action on route change
+  }, [location]);
+
   return (
     <>
       <h1>Tour of Heroes</h1>
